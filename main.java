@@ -1,49 +1,36 @@
-// Main.java
-// School Administration Management System using Inheritance and Polymorphism
-
 class Person {
-    // Common attributes
     protected String name;
     protected int age;
 
-    // Constructor
     Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    // General method
     void showRole() {
         System.out.println("I am a Person.");
     }
 
-    // Display common details
     void displayInfo() {
         System.out.println("Name : " + name);
         System.out.println("Age  : " + age);
     }
 }
 
-// Teacher class inherits Person
 class Teacher extends Person {
     private String subject;
     private double salary;
 
-    // Constructor
     Teacher(String name, int age, String subject, double salary) {
         super(name, age);
         this.subject = subject;
         this.salary = salary;
     }
 
-    // Overriding method
-    @Override
     void showRole() {
         System.out.println("I am a Teacher. I teach students.");
     }
 
-    // Display teacher details
-    @Override
     void displayInfo() {
         super.displayInfo();
         System.out.println("Subject : " + subject);
@@ -51,26 +38,20 @@ class Teacher extends Person {
     }
 }
 
-// Student class inherits Person
 class Student extends Person {
     private int rollNumber;
     private String course;
 
-    // Constructor
     Student(String name, int age, int rollNumber, String course) {
         super(name, age);
         this.rollNumber = rollNumber;
         this.course = course;
     }
 
-    // Overriding method
-    @Override
     void showRole() {
         System.out.println("I am a Student. I study subjects.");
     }
 
-    // Display student details
-    @Override
     void displayInfo() {
         super.displayInfo();
         System.out.println("Roll No : " + rollNumber);
@@ -78,15 +59,13 @@ class Student extends Person {
     }
 }
 
-// Main class
 public class Main {
     public static void main(String[] args) {
 
-        // Runtime Polymorphism using Person array
         Person[] people = new Person[2];
 
         people[0] = new Teacher(
-                "Rahul Sharma",
+                "shristy kumari",
                 40,
                 "Computer Science",
                 50000
@@ -103,8 +82,8 @@ public class Main {
 
             System.out.println("----------------------------");
 
-            p.showRole();      // Calls overridden method
-            p.displayInfo();   // Calls respective displayInfo()
+            p.showRole();   
+            p.displayInfo();
 
             System.out.println("----------------------------\n");
         }
