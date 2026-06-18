@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Person {
     String name;
     int age;
@@ -24,8 +26,9 @@ class Teacher extends Person {
 
     @Override
     void showRole() {
-        System.out.println("I am a Teacher.");
+        System.out.println("\nI am a Teacher.");
         System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
         System.out.println("Subject: " + subject);
         System.out.println("Salary: ₹" + salary);
     }
@@ -43,26 +46,63 @@ class Student extends Person {
 
     @Override
     void showRole() {
-        System.out.println("I am a Student.");
+        System.out.println("\nI am a Student.");
         System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
         System.out.println("Roll Number: " + rollNumber);
         System.out.println("Course: " + course);
     }
 }
 
-public class Main {
+public class SchoolManagementSystem {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        // Teacher Input
+        System.out.println("Enter Teacher Details");
+        System.out.print("Name: ");
+        String tName = sc.nextLine();
+
+        System.out.print("Age: ");
+        int tAge = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Subject: ");
+        String subject = sc.nextLine();
+
+        System.out.print("Salary: ");
+        double salary = sc.nextDouble();
+        sc.nextLine();
+
+        // Student Input
+        System.out.println("\nEnter Student Details");
+
+        System.out.print("Name: ");
+        String sName = sc.nextLine();
+
+        System.out.print("Age: ");
+        int sAge = sc.nextInt();
+
+        System.out.print("Roll Number: ");
+        int rollNumber = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Course: ");
+        String course = sc.nextLine();
+
         Person[] people = {
-            new Teacher("Rahul Sharma", 35, "Mathematics", 50000),
-            new Student("Shristy Kumari", 18, 101, "Computer Science")
+            new Teacher(tName, tAge, subject, salary),
+            new Student(sName, sAge, rollNumber, course)
         };
 
-        System.out.println("===== SCHOOL MANAGEMENT SYSTEM =====\n");
+        System.out.println("\n===== SCHOOL MANAGEMENT SYSTEM =====");
 
         for (Person person : people) {
             person.showRole();
             System.out.println("----------------------------");
         }
+
+        sc.close();
     }
 }
