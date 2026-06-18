@@ -1,6 +1,6 @@
 class Person {
-    protected String name;
-    protected int age;
+    String name;
+    int age;
 
     Person(String name, int age) {
         this.name = name;
@@ -10,16 +10,11 @@ class Person {
     void showRole() {
         System.out.println("I am a Person.");
     }
-
-    void displayInfo() {
-        System.out.println("Name : " + name);
-        System.out.println("Age  : " + age);
-    }
 }
 
 class Teacher extends Person {
-    private String subject;
-    private double salary;
+    String subject;
+    double salary;
 
     Teacher(String name, int age, String subject, double salary) {
         super(name, age);
@@ -27,20 +22,18 @@ class Teacher extends Person {
         this.salary = salary;
     }
 
+    @Override
     void showRole() {
-        System.out.println("I am a Teacher. I teach students.");
-    }
-
-    void displayInfo() {
-        super.displayInfo();
-        System.out.println("Subject : " + subject);
-        System.out.println("Salary  : " + salary);
+        System.out.println("I am a Teacher.");
+        System.out.println("Name: " + name);
+        System.out.println("Subject: " + subject);
+        System.out.println("Salary: ₹" + salary);
     }
 }
 
 class Student extends Person {
-    private int rollNumber;
-    private String course;
+    int rollNumber;
+    String course;
 
     Student(String name, int age, int rollNumber, String course) {
         super(name, age);
@@ -48,44 +41,28 @@ class Student extends Person {
         this.course = course;
     }
 
+    @Override
     void showRole() {
-        System.out.println("I am a Student. I study subjects.");
-    }
-
-    void displayInfo() {
-        super.displayInfo();
-        System.out.println("Roll No : " + rollNumber);
-        System.out.println("Course  : " + course);
+        System.out.println("I am a Student.");
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+        System.out.println("Course: " + course);
     }
 }
 
 public class Main {
     public static void main(String[] args) {
 
-        Person[] people = new Person[2];
+        Person[] people = {
+            new Teacher("Rahul Sharma", 35, "Mathematics", 50000),
+            new Student("Shristy Kumari", 18, 101, "Computer Science")
+        };
 
-        people[0] = new Teacher(
-                "shristy kumari",
-                40,
-                "Computer Science",
-                50000
-        );
+        System.out.println("===== SCHOOL MANAGEMENT SYSTEM =====\n");
 
-        people[1] = new Student(
-                "Anjali Verma",
-                20,
-                101,
-                "BCA"
-        );
-
-        for (Person p : people) {
-
+        for (Person person : people) {
+            person.showRole();
             System.out.println("----------------------------");
-
-            p.showRole();   
-            p.displayInfo();
-
-            System.out.println("----------------------------\n");
         }
     }
 }
